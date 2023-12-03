@@ -1,9 +1,9 @@
 mod day1;
 mod day2;
+mod day3;
 
 
 fn main() -> std::io::Result<()> {
-    let (sum_possible, sum_power) = day2::soln()?;
-    println!("possible: {sum_possible}; power: {sum_power}");
+    day3::soln()?;
     Ok(())
 }
