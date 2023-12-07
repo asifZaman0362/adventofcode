@@ -5,10 +5,10 @@ fn get_card_strength(card: u8) -> u8 {
         card - b'0'
     } else {
         match card {
-            b'A' => 14,
-            b'K' => 13,
-            b'Q' => 12,
-            b'J' => 11,
+            b'A' => 13,
+            b'K' => 12,
+            b'Q' => 11,
+            b'J' => 1,
             b'T' => 10,
             _ => unreachable!("never happens!")
         }
@@ -37,24 +37,69 @@ fn get_hand_type(hand: &str) -> (HandType, [u8; 5]) {
             map.insert(*byte, 1);
         }
     }
-    let mut vec = map.into_iter().collect::<Vec<_>>();
+    let mut vec = map.clone().into_iter().collect::<Vec<_>>();
     vec.sort_by(|a, b| b.1.cmp(&a.1));
     let kind = match vec[0].1 {
         5 => HandType::FiveOfAKind,
-        4 => HandType::FourOfAKind,
+        4 => {
+            if let Some(_) = map.get(&b'J') {
+                HandType::FiveOfAKind
+            } else {
+                HandType::FourOfAKind
+            }
+        }
         3 => {
-            match vec[1].1 {
-                2 => HandType::FullHouse,
-                _ => HandType::ThreeOfAKind
+            if let Some(count) = map.get(&b'J') {
+                if *count == 3 {
+                    let count = vec[1].1;
+                    if count == 2 {
+                        HandType::FiveOfAKind
+                    } else {
+                        HandType::FourOfAKind
+                    }
+                } else if *count == 2 {
+                    HandType::FiveOfAKind
+                } else {
+                    HandType::FourOfAKind
+                }
+            } else {
+                match vec[1].1 {
+                    2 => HandType::FullHouse,
+                    _ => HandType::ThreeOfAKind
+                }
             }
         }
         2 => {
-            match vec[1].1 {
-                2 => HandType::TwoPairs,
-                _ => HandType::OnePair
+            if let Some(count) = map.get(&b'J') {
+                if *count == 2 {
+                    let count = vec[1].1;
+                    if count == 2 {
+                        HandType::FourOfAKind
+                    } else {
+                        HandType::ThreeOfAKind
+                    }
+                } else {
+                    let count = vec[1].1;
+                    if count == 1 {
+                        HandType::ThreeOfAKind
+                    } else {
+                        HandType::FullHouse
+                    }
+                }
+            } else {
+                match vec[1].1 {
+                    2 => HandType::TwoPairs,
+                    _ => HandType::OnePair
+                }
             }
         }
-        1 => HandType::HighCard,
+        1 => {
+            if let Some(_) = map.get(&b'J') {
+                HandType::OnePair
+            } else {
+                HandType::HighCard
+            }
+        }
         _ => unreachable!("never happens!")
     };
     (kind, bytes)
