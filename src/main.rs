@@ -9,9 +9,10 @@ mod day6;
 mod day7;
 mod day8;
 mod day9;
+mod day10;
 
 fn main() -> std::io::Result<()> {
-    const INPUT: &str = "inputs/day9.txt";
+    const INPUT: &str = "inputs/day10.txt";
     let mut lines = Vec::new();
     let mut buf = String::new();
     let mut reader = BufReader::new(File::open(INPUT)?);
@@ -25,7 +26,7 @@ fn main() -> std::io::Result<()> {
             Err(_) => break
         }
     }
-    let res = day9::soln(lines);
+    let res = day10::soln(lines);
     println!("{res:?}");
     Ok(())
 }
