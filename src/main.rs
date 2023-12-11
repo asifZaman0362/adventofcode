@@ -1,3 +1,4 @@
+#[allow(dead_code)]
 use std::fs::File;
 use std::io::{BufRead, BufReader};
 mod day1;
@@ -10,9 +11,10 @@ mod day7;
 mod day8;
 mod day9;
 mod day10;
+mod day11;
 
 fn main() -> std::io::Result<()> {
-    const INPUT: &str = "inputs/day10.txt";
+    const INPUT: &str = "inputs/day11.txt";
     let mut lines = Vec::new();
     let mut buf = String::new();
     let mut reader = BufReader::new(File::open(INPUT)?);
@@ -26,7 +28,7 @@ fn main() -> std::io::Result<()> {
             Err(_) => break
         }
     }
-    let res = day10::soln(lines);
+    let res = day11::soln(lines);
     println!("{res:?}");
     Ok(())
 }

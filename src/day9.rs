@@ -1,8 +1,10 @@
+#[allow(dead_code)]
 enum Direction {
     Backwards,
     Forwards
 }
 
+#[allow(dead_code)]
 fn is_ap(seq: &Vec<i64>) -> Option<i64> {
     let mut last_diff = None;
     for pair in seq.windows(2) {
@@ -18,6 +20,7 @@ fn is_ap(seq: &Vec<i64>) -> Option<i64> {
     return last_diff;
 }
 
+#[allow(dead_code)]
 fn predict_value(seq: &Vec<i64>) -> (i64, i64) {
     if let Some(diff) = is_ap(seq) {
         return (seq[0] - diff, diff + seq[seq.len() - 1]);
@@ -33,6 +36,7 @@ fn predict_value(seq: &Vec<i64>) -> (i64, i64) {
     }
 }
 
+#[allow(dead_code)]
 pub fn soln(lines: Vec<String>) -> (i64, i64) {
     let mut sum_forwards = 0;
     let mut sum_backwards = 0;

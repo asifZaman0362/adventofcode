@@ -2,6 +2,7 @@ use std::collections::HashMap;
 use std::fs::File;
 use std::io::{BufRead, BufReader};
 
+#[allow(dead_code)]
 fn get_symbols(string: &str) -> (Vec<usize>, HashMap<usize, usize>) {
     let mut numbers = HashMap::new();
     let mut symbols = Vec::new();
@@ -35,6 +36,7 @@ fn get_symbols(string: &str) -> (Vec<usize>, HashMap<usize, usize>) {
     (symbols, numbers)
 }
 
+#[allow(dead_code)]
 pub fn soln() -> std::io::Result<(u32, u64)> {
     let mut ex = String::new();
     let file = File::open("inputs/day3.txt")?;

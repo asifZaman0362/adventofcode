@@ -1,5 +1,6 @@
 use regex::*;
 
+#[allow(dead_code)]
 fn solve_quadratic(a: f64, b: f64, c: f64) -> (i64, i64) {
     let disc = b.powi(2) - 4.0 * a * c;
     if disc < 0.0 {
@@ -14,6 +15,7 @@ fn solve_quadratic(a: f64, b: f64, c: f64) -> (i64, i64) {
     }
 }
 
+#[allow(dead_code)]
 pub fn soln(lines: Vec<String>) -> (i64, i64) {
     let re = Regex::new("([0-9]+)").unwrap();
     let times = re

@@ -1,6 +1,7 @@
 use std::fs::File;
 use std::io::{BufRead, BufReader};
 
+#[allow(dead_code)]
 fn get_num_from_line(line: &str) -> i32 {
     if let Some((first, pos)) = find_first_digit(&line) {
         if let Some(last) = find_last_digit(&line[pos..]) {
@@ -13,6 +14,7 @@ fn get_num_from_line(line: &str) -> i32 {
     }
 }
 
+#[allow(dead_code)]
 fn find_first_digit(line: &str) -> Option<(i32, usize)> {
     let mut iter = line.as_bytes().iter().enumerate();
     while let Some((idx, c)) = iter.next() {
@@ -122,6 +124,7 @@ fn find_last_digit(line: &str) -> Option<i32> {
     None
 }
 
+#[allow(dead_code)]
 pub fn soln() -> std::io::Result<()> {
     let mut res = 0;
     let file = File::open("inputs/day1-1.txt")?;

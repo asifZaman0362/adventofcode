@@ -1,5 +1,6 @@
 use std::collections::HashMap;
 
+#[allow(dead_code)]
 fn get_lcm(n1: u64, n2: u64) -> u64 {
     let mut rem: u64= 0;
     let mut x: u64  = 0;
@@ -24,6 +25,7 @@ fn get_lcm(n1: u64, n2: u64) -> u64 {
     n1 * n2 / y
 }
 
+#[allow(dead_code)]
 pub fn soln(lines: Vec<String>) -> u64 {
     let mut steps = 0;
     let mut direction_iter = lines[0].trim().as_bytes().iter();

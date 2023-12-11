@@ -2,6 +2,7 @@ use std::collections::HashSet;
 use std::fs::File;
 use std::io::BufRead;
 
+#[allow(dead_code)]
 fn get_card_points(line: &str) -> (u32, u32) {
     let (_, numbers) = line.split_once(":").unwrap();
     let (winning, you_have) = numbers.split_once("|").unwrap();
@@ -29,6 +30,7 @@ fn get_card_points(line: &str) -> (u32, u32) {
     }
 }
 
+#[allow(dead_code)]
 pub fn soln() -> std::io::Result<(u32, usize)> {
     let file = File::open("inputs/day4.txt")?;
     let mut buf_reader = std::io::BufReader::new(file);

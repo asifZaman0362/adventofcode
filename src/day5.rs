@@ -1,13 +1,16 @@
 use core::ops::Range;
 
+#[allow(dead_code)]
 type Ran = Range<i64>;
 
+#[allow(dead_code)]
 struct Map {
     src: i64,
     dst: i64,
     len: i64,
 }
 
+#[allow(dead_code)]
 fn split_ranges(seeds: Ran, maps: &Vec<Map>) -> Vec<Ran> {
     let mut ranges = vec![seeds];
     let mut out = vec![];
@@ -42,6 +45,7 @@ fn split_ranges(seeds: Ran, maps: &Vec<Map>) -> Vec<Ran> {
     out
 }
 
+#[allow(dead_code)]
 pub fn soln(lines: Vec<String>) -> (i64, i64) {
     let mut maps: Vec<Vec<Map>> = vec![];
     let mut seeds = vec![];

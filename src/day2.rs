@@ -2,6 +2,7 @@ use std::fs::File;
 use std::io::{BufRead, BufReader};
 use std::collections::HashMap;
 
+#[allow(dead_code)]
 fn get_game_info(line: &str) -> (u32, HashMap<&str, u32>) {
     let mut out: HashMap<&str, u32> = HashMap::new();
     let (_, info) = line.split_once(" ").unwrap();
@@ -25,6 +26,7 @@ fn get_game_info(line: &str) -> (u32, HashMap<&str, u32>) {
     (game_num.parse().unwrap(), out)
 }
 
+#[allow(dead_code)]
 pub fn soln() -> std::io::Result<(u32, u32)> {
     let mut sum = 0;
     let file = File::open("inputs/day2.txt")?;

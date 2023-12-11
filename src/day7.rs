@@ -1,5 +1,6 @@
 use std::collections::HashMap;
 
+#[allow(dead_code)]
 fn get_card_strength(card: u8) -> u8 {
     if card >= b'0' && card <= b'9' {
         card - b'0'
@@ -15,6 +16,7 @@ fn get_card_strength(card: u8) -> u8 {
     }
 }
 
+#[allow(dead_code)]
 #[derive(Debug)]
 enum HandType {
     FiveOfAKind,
@@ -26,6 +28,7 @@ enum HandType {
     HighCard
 }
 
+#[allow(dead_code)]
 fn get_hand_type(hand: &str) -> (HandType, [u8; 5]) {
     let mut map = HashMap::<u8, u8>::new();
     let mut bytes = [0u8; 5];
@@ -105,6 +108,7 @@ fn get_hand_type(hand: &str) -> (HandType, [u8; 5]) {
     (kind, bytes)
 }
 
+#[allow(dead_code)]
 fn compare_cards(a: &[u8; 5], b: &[u8; 5]) -> std::cmp::Ordering {
     for (idx, card) in a.iter().enumerate() {
         match get_card_strength(*card).cmp(&get_card_strength(b[idx])) {
@@ -116,6 +120,7 @@ fn compare_cards(a: &[u8; 5], b: &[u8; 5]) -> std::cmp::Ordering {
     return std::cmp::Ordering::Equal;
 }
 
+#[allow(dead_code)]
 fn compare_hands(a: &(HandType, [u8; 5]), b: &(HandType, [u8; 5])) -> std::cmp::Ordering {
     match a.0 {
         HandType::FiveOfAKind => {
@@ -178,6 +183,7 @@ fn compare_hands(a: &(HandType, [u8; 5]), b: &(HandType, [u8; 5])) -> std::cmp::
     }
 }
 
+#[allow(dead_code)]
 pub fn soln(lines: Vec<String>) -> (u64, u64) {
     let mut hands = Vec::<((HandType, [u8; 5]), u64)>::new();
     for line in lines {

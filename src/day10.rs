@@ -1,5 +1,6 @@
 use std::collections::HashSet;
 
+#[allow(dead_code)]
 #[derive(PartialEq)]
 #[derive(Debug)]
 enum Direction {
@@ -9,6 +10,7 @@ enum Direction {
     Up,
 }
 
+#[allow(dead_code)]
 impl std::ops::Neg for Direction {
     type Output = Self;
     fn neg(self) -> Self::Output {
@@ -21,6 +23,7 @@ impl std::ops::Neg for Direction {
     }
 }
 
+#[allow(dead_code)]
 fn get_next(x: usize, y: usize, map: &Vec<String>, dir: Direction) -> (u8, usize, usize) {
     let (nx, ny) = match dir {
         Direction::Left => (x, y - 1),
@@ -31,6 +34,7 @@ fn get_next(x: usize, y: usize, map: &Vec<String>, dir: Direction) -> (u8, usize
     (map[nx].as_bytes()[ny], nx, ny)
 }
 
+#[allow(dead_code)]
 fn traverse(x: usize, y: usize, lines: &Vec<String>, dir: Direction, s: char) -> (usize, usize) {
     let mut from = dir;
     let mut steps = 0;
@@ -127,6 +131,7 @@ fn traverse(x: usize, y: usize, lines: &Vec<String>, dir: Direction, s: char) ->
     (steps, total_enclosed)
 }
 
+#[allow(dead_code)]
 pub fn soln(lines: Vec<String>) -> (usize, usize) {
     let mut start = (0usize, 0usize);
     let w = lines[0].len();
