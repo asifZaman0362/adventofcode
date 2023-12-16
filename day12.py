@@ -27,6 +27,7 @@ def take(text: str, n: int) -> int:
 @functools.cache
 def solve(text: str, nums):
     #global memo
+    #your memo sucks, use functools.cache instead kthxbye
     nums = list(nums)
     total = sum(nums)
     orig = text
